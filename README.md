@@ -1,6 +1,9 @@
 # SU-01: Achieving Gold-Medal-Level Olympiad Reasoning via Simple and Unified Scaling
 
-This repository contains the SU-01 project page, evaluation visualizations, olympiad case studies, and related materials.
+[![Paper](https://img.shields.io/badge/Paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/)
+[![Blog](https://img.shields.io/badge/Blog-SU--01-0D1117?style=for-the-badge&logo=githubpages&logoColor=white)](https://luoxiaoheics.github.io/SU-01/)
+[![SU-01-30B-A3B](https://img.shields.io/badge/Hugging%20Face-SU--01--30B--A3B-FCD022?style=for-the-badge&logo=huggingface)](https://huggingface.co/)
+
 
 ![ProofBench Overall Results](docs/source_html/proofbench_light.png)
 
@@ -11,11 +14,6 @@ Shanghai Artificial Intelligence Laboratory introduced SU-01, a unified post-tra
 The recipe is instantiated as **SU-01**. It first applies reverse-perplexity curriculum SFT on roughly **338K** high-quality trajectories, then uses **200** steps of two-stage reinforcement learning to improve solving ability and complete-proof quality, and finally runs a multi-round "generate-verify-revise" loop at inference time. Without calling external tools, executing code, or relying on dedicated symbolic solvers, the model can sustain more than **100K tokens** of natural-language reasoning on difficult olympiad problems.
 
 In competition-style evaluations, inference-time scaling brings **SU-01** to **35** points on both **IMO 2025** and **USAMO 2026**, reaching gold-medal-level performance. It also exceeds the gold cutoff on **IPhO 2024/2025** and substantially outperforms similarly sized models on proof-level benchmarks such as **ProofBench**. The central insight is that scientific reasoning depends not only on model scale, but also on whether proof construction, verification, and revision can be organized into a reusable training-inference loop.
-
-## Links
-
-- [SU-01 Official Repo](https://github.com/)
-- [SU-01-30B-A3B](https://huggingface.co/)
 
 ## SU-01 Pipeline
 
@@ -41,12 +39,12 @@ Even with a strong reasoning policy, the hardest IMO-style problems still requir
 
 | Model | AnswerBench | AMO-Bench | AIME 25/26 | FS-O Physics | FS-O Chemistry | FS-O Biology | FS-O Overall | Avg. |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| P1-30B-A3B | 69.3% | 41.3% | 90.4%/89.6% | 57.5% | 57.5% | <u>27.5%</u> | 54.5% | 69.0% |
+| P1-30B-A3B | 69.3% | 41.3% | 90.4%/89.6% | 57.5% | 57.5% | <ins>27.5%</ins> | 54.5% | 69.0% |
 | GLM-4.7-Flash | 73.8% | 53.8% | 91.3%/88.3% | 54.5% | 60.0% | 17.5% | 53.0% | 72.0% |
-| Nemotron-Cascade-2 | **80.5%** | 40.8% | <u>94.2%</u>/90.0% | 56.0% | 56.3% | **30.0%** | 53.5% | 71.8% |
-| Qwen3.6-35B-A3B | <u>78.0%</u> | <u>58.8%</u> | 92.5%/<u>92.9%</u> | <u>65.5%</u> | **74.4%** | 25.0% | **65.0%** | **77.4%** |
-| Gemma-4-31B | 67.7% | 34.5% | 88.8%/91.3% | **69.0%** | 61.9% | <u>27.5%</u> | 61.0% | 68.7% |
-| **SU-01** | 77.5% | **59.8%** | **94.6%**/**93.3%** | 62.5% | <u>69.4%</u> | 25.0% | <u>61.5%</u> | <u>77.3%</u> |
+| Nemotron-Cascade-2 | **80.5%** | 40.8% | <ins>94.2%</ins>/90.0% | 56.0% | 56.3% | **30.0%** | 53.5% | 71.8% |
+| Qwen3.6-35B-A3B | <ins>78.0%</ins> | <ins>58.8%</ins> | 92.5%/<ins>92.9%</ins> | <ins>65.5%</ins> | **74.4%** | 25.0% | **65.0%** | **77.4%** |
+| Gemma-4-31B | 74.0% | 39.3% | 88.8%/91.3% | **69.0%** | 61.9% | <ins>27.5%</ins> | 61.0% | 70.9% |
+| **SU-01** | 77.5% | **59.8%** | **94.6%**/**93.3%** | 62.5% | <ins>69.4%</ins> | 25.0% | <ins>61.5%</ins> | <ins>77.3%</ins> |
 
 Bold marks the best score within the comparison block; underline marks the second best. FS-O abbreviates FrontierScience-Olympiad.
 
@@ -57,15 +55,15 @@ Bold marks the best score within the comparison block; underline marks the secon
 
 | Group | Model | ProofBench Basic | ProofBench Advanced | ProofBench Overall | FS-R Physics | FS-R Chemistry | FS-R Biology | FS-R Overall |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Larger models | Gemini 3.1 Pro Thinking | <u>95.2%</u> | <u>50.0%</u> | <u>72.6%</u> | 0.0% | <u>30.0%</u> | 10.0% | 13.3% |
+| Larger models | Gemini 3.1 Pro Thinking | <ins>95.2%</ins> | <ins>50.0%</ins> | <ins>72.6%</ins> | 0.0% | <ins>30.0%</ins> | 10.0% | 13.3% |
 | Larger models | GPT-5.5-High | **96.7%** | **64.8%** | **80.7%** | **25.0%** | **40.0%** | **45.0%** | **36.7%** |
-| Larger models | DeepSeek-V3.2-Speciale | 62.9% | 28.6% | 45.7% | <u>10.0%</u> | 20.0% | <u>15.0%</u> | <u>15.0%</u> |
+| Larger models | DeepSeek-V3.2-Speciale | 62.9% | 28.6% | 45.7% | <ins>10.0%</ins> | 20.0% | <ins>15.0%</ins> | <ins>15.0%</ins> |
 | Similar-size models | P1-30B-A3B | 33.8% | 6.2% | 20.0% | 0.0% | **10.0%** | 0.0% | 3.3% |
 | Similar-size models | GLM-4.7-Flash | 51.0% | 16.7% | 33.8% | 0.0% | 0.0% | 0.0% | 0.0% |
-| Similar-size models | Nemotron-Cascade-2 | <u>77.1%</u> | 28.6% | 52.9% | <u>5.0%</u> | 5.0% | **20.0%** | <u>10.0%</u> |
+| Similar-size models | Nemotron-Cascade-2 | <ins>77.1%</ins> | 28.6% | 52.9% | <ins>5.0%</ins> | 5.0% | **20.0%** | <ins>10.0%</ins> |
 | Similar-size models | Qwen3.6-35B-A3B | 39.1% | 7.1% | 23.1% | 0.0% | 5.0% | 10.0% | 5.0% |
 | Similar-size models | Gemma-4-31B | 46.7% | 16.2% | 31.4% | 0.0% | **10.0%** | 5.0% | 5.0% |
-| Similar-size models | **SU-01** | <u>77.1%</u>/**91.0%** | <u>38.1%</u>/**49.5%** | <u>57.6%</u>/**70.2%** | **10.0%** | **10.0%** | <u>15.0%</u> | **11.7%** |
+| Similar-size models | **SU-01** | <ins>77.1%</ins>/**91.0%** | <ins>38.1%</ins>/**49.5%** | <ins>57.6%</ins>/**70.2%** | **10.0%** | **10.0%** | <ins>15.0%</ins> | **11.7%** |
 
 Bold and underline indicate the best and second-best results within each comparison block. FS-R abbreviates FrontierScience-Research.
 
@@ -80,8 +78,8 @@ Bold and underline indicate the best and second-best results within each compari
 | GLM-4.7-Flash | 22.2 | 19.5 |
 | Nemotron-Cascade-2 | 21.2 | 16.7 |
 | Qwen3.6-35B-A3B | 24.3 | 19.9 |
-| Gemma-4-31B | <u>24.4</u> | <u>20.3</u> |
-| **SU-01** | 23.5 / **25.3** | <u>20.3</u> / **21.7** |
+| Gemma-4-31B | <ins>24.4</ins> | <ins>20.3</ins> |
+| **SU-01** | 23.5 / **25.3** | <ins>20.3</ins> / **21.7** |
 
 **Table 3b. IMO 2025 performance.** Stars indicate human-expert evaluation for TTS results.
 
