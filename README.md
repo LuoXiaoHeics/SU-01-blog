@@ -65,7 +65,7 @@ Bold marks the best score within the comparison block; underline marks the secon
 | Similar-size models | Nemotron-Cascade-2 | <u>77.1%</u> | 28.6% | 52.9% | <u>5.0%</u> | 5.0% | **20.0%** | <u>10.0%</u> |
 | Similar-size models | Qwen3.6-35B-A3B | 39.1% | 7.1% | 23.1% | 0.0% | 5.0% | 10.0% | 5.0% |
 | Similar-size models | Gemma-4-31B | 46.7% | 16.2% | 31.4% | 0.0% | **10.0%** | 5.0% | 5.0% |
-| Similar-size models | **SU-01** | <u>77.1%</u> / **91.0%** | <u>38.1%</u> / **49.5%** | <u>57.6%</u> / **70.2%** | **10.0%** | **10.0%** | <u>15.0%</u> | **11.7%** |
+| Similar-size models | **SU-01** | <u>77.1%</u>/**91.0%** | <u>38.1%</u>/**49.5%** | <u>57.6%</u>/**70.2%** | **10.0%** | **10.0%** | <u>15.0%</u> | **11.7%** |
 
 Bold and underline indicate the best and second-best results within each comparison block. FS-R abbreviates FrontierScience-Research.
 
